@@ -19,7 +19,7 @@ location = st.text_input("Location")
 company = st.text_area("Company Profile")
 description = st.text_area("Job Description")
 requirements = st.text_area("Requirements")
-benefits = st.text_area("Benefits")
+
 
 st.markdown("---")
 
