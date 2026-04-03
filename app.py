@@ -8,9 +8,9 @@ tfidf = pickle.load(open("tfidf_vectorizer.pkl", "rb"))
 label_encoder = pickle.load(open("label_encoder.pkl", "rb"))
 
 # ---------- Page Config ----------
-st.set_page_config(page_title="Fake Job Detection", page_icon="??", layout="centered")
+st.set_page_config(page_title="Fake Job Detection", page_icon="💼", layout="centered")
 
-st.title("?? Fake Job Posting Detection System")
+st.title("💼 Fake Job Posting Detection System")
 st.markdown("Enter job details below to check whether the job posting is **Real or Fake**.")
 
 # ---------- Input Fields ----------
@@ -24,13 +24,13 @@ benefits = st.text_area("Benefits")
 st.markdown("---")
 
 # ---------- Prediction ----------
-if st.button("?? Predict Job Authenticity"):
+if st.button("🔎 Predict Job Authenticity"):
 
     # combine all text fields (IMPORTANT)
     full_text = f"{title} {location} {company} {description} {requirements} {benefits}"
 
     if full_text.strip() == "":
-        st.warning("?? Please enter job information")
+        st.warning("⚠️ Please enter job information")
     else:
         # TFIDF transform
         vector = tfidf.transform([full_text])
@@ -43,9 +43,9 @@ if st.button("?? Predict Job Authenticity"):
 
         label = label_encoder.inverse_transform([pred])[0]
 
-        st.markdown("### ?? Prediction Result")
+        st.markdown("### 📊 Prediction Result")
 
         if label == 1 or label == "fake":
-            st.error(f"?? This job posting is **FAKE**  \nConfidence: {confidence:.2f}%")
+            st.error(f"⚠️ This job posting is **FAKE**  \nConfidence: {confidence:.2f}%")
         else:
-            st.success(f"? This job posting is **REAL**  \nConfidence: {confidence:.2f}%")
+            st.success(f"✅ This job posting is **REAL**  \nConfidence: {confidence:.2f}%")
