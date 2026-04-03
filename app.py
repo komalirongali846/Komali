@@ -27,7 +27,7 @@ st.markdown("---")
 if st.button("🔎 Predict Job Authenticity"):
 
     # combine all text fields (IMPORTANT)
-    full_text = f"{title} {location} {company} {description} {requirements} {benefits}"
+    full_text = f"{title} {location} {company} {description} {requirements}"
 
     if full_text.strip() == "":
         st.warning("⚠️ Please enter job information")
